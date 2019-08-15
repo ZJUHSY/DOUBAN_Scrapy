@@ -19,7 +19,7 @@ class Tianya(Spider):
         #auth_v = []
         url_prefix = 'https://www.8btc.com/article/'
         auth_prefix = 'https://www.8btc.com'
-        num = 18500
+        num = 18900
         while num <= 500000:
             print(num)
             url = url_prefix + str(num)
@@ -31,7 +31,8 @@ class Tianya(Spider):
                 headline = page.xpath('//div[@class="main__header"]/div[@class="header__main"]/div[@class="bbt-container"]/h1').xpath('string(.)').extract()
                 
                 if headline and headline[0].strip():
-                    if headline in title_v: #prevent repettious reading
+                    if headline[0].strip() in title_v: #prevent repettious reading
+                        #print(headline[0].strip())
                         continue
                     else:
                         news_item['headline'] = headline[0].strip()
