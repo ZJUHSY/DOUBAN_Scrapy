@@ -16,10 +16,10 @@ class Tianya(Spider):
     @inline_requests
     def parse(self, response):
         title_v = []
-        auth_v = []
+        #auth_v = []
         url_prefix = 'https://www.8btc.com/article/'
         auth_prefix = 'https://www.8btc.com'
-        num = 18344
+        num = 18500
         while num <= 500000:
             print(num)
             url = url_prefix + str(num)
@@ -35,7 +35,7 @@ class Tianya(Spider):
                         continue
                     else:
                         news_item['headline'] = headline[0].strip()
-                        title_v.append(headline)
+                        title_v.append(headline[0].strip())
                 else:
                     news_item['headline'] = ""
 
