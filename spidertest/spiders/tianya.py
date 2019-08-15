@@ -15,6 +15,8 @@ class Tianya(Spider):
     
     @inline_requests
     def parse(self, response):
+        title_v = []
+        auth_v = []
         url_prefix = 'https://www.8btc.com/article/'
         auth_prefix = 'https://www.8btc.com'
         num = 0
@@ -27,8 +29,13 @@ class Tianya(Spider):
                 news_item = NewsItem()
 
                 headline = page.xpath('//div[@class="main__header"]/div[@class="header__main"]/div[@class="bbt-container"]/h1').xpath('string(.)').extract()
+                
                 if headline and headline[0].strip():
-                    news_item['headline'] = headline[0].strip()
+                    if headline in title_v: #prevent repettious reading
+                        continue
+                    else:
+                        news_item['headline'] = headline[0].strip()
+                        title_v.append(headline)
                 else:
                     news_item['headline'] = ""
 
