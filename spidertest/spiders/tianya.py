@@ -33,6 +33,7 @@ class Tianya(Spider):
                 if headline and headline[0].strip():
                     if headline[0].strip() in title_v: #prevent repettious reading
                         #print(headline[0].strip())
+                        num += 1
                         continue
                     else:
                         news_item['headline'] = headline[0].strip()
