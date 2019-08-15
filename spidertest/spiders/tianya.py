@@ -19,7 +19,7 @@ class Tianya(Spider):
         auth_v = []
         url_prefix = 'https://www.8btc.com/article/'
         auth_prefix = 'https://www.8btc.com'
-        num = 0
+        num = 18344
         while num <= 500000:
             print(num)
             url = url_prefix + str(num)
